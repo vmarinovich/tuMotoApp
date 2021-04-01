@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>559838676085-ga1gsb8mcijcqdnr1j5an220pfmv2k19.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.559838676085-ga1gsb8mcijcqdnr1j5an220pfmv2k19</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBgAu58lGvjq6oRQC7VPlbpo5Mjr1ZRC20</string>
+	<key>GCM_SENDER_ID</key>
+	<string>559838676085</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.tuMotoApp</string>
+	<key>PROJECT_ID</key>
+	<string>tumoto-6d2e5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tumoto-6d2e5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:559838676085:ios:a7dfff438e10f1d572e43c</string>
+</dict>
+</plist>

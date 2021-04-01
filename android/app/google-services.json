@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559838676085",
+    "project_id": "tumoto-6d2e5",
+    "storage_bucket": "tumoto-6d2e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559838676085:android:09541b245fdbf1e072e43c",
+        "android_client_info": {
+          "package_name": "com.app.tu_moto_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559838676085-fcm9dgk161ju2959bjo3lqav1gf2mftm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjohWyiIWNOcPBESvKOclnD78NbX4v-ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559838676085-fcm9dgk161ju2959bjo3lqav1gf2mftm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
