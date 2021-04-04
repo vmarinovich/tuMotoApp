@@ -89,14 +89,10 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.7.2)"
   - GoogleUtilities/Reachability (6.7.2):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.1.0):
+  - GTMAppAuth (1.2.1):
     - AppAuth/Core (~> 1.4)
-    - GTMSessionFetcher (~> 1.4)
-  - GTMSessionFetcher (1.5.0):
-    - GTMSessionFetcher/Full (= 1.5.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
-  - GTMSessionFetcher/Full (1.5.0):
-    - GTMSessionFetcher/Core (= 1.5.0)
   - leveldb-library (1.22.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -170,32 +166,32 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
-  firebase_auth: d5159db3873478d1ac839af7b10d2f831516136a
-  firebase_core: 5d6a02f3d85acd5f8321c2d6d62877626a670659
-  firebase_database: a3737781469b5275f899e04fcb0aa556f37e400a
+  firebase_auth: 536ae8bccce24cf34656f950cf2c4bdfd1b5408e
+  firebase_core: 536cc3dc19db0d2dbe9e6463790268b6547657c7
+  firebase_database: 3d42b7688cef42cbc9fe804fe21325659eecd1d4
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
   FirebaseCore: d889d9e12535b7f36ac8bfbf1713a0836a3012cd
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
   FirebaseDatabase: 13a865a4b85897462b930eb683bda8f52583713f
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_geofire: 95912394d959280c7c38f43e4e3a69e1184a273a
-  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
+  flutter_geofire: 6a7092973b84265bb454da5b948db6df5aca028f
+  fluttertoast: 28246c4aced3b2015075b22d8e9fbec5762e20ab
   GeoFire: 8372fdf980b5ef1df6767dba7ff79288fad34612
-  geolocator: f5e3de65e241caba7ce3e8a618803387bda73384
-  google_maps_flutter: c7f9c73576de1fbe152a227bfd6e6c4ae8088619
-  google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
+  geolocator: 1aec3af7fdf3217d6f1dc8d95acf9f5da54b13ac
+  google_maps_flutter: 36d421bbd23ce55cdf9c2a651f8df0a6feee5530
+  google_sign_in: 0c66cb2ca4aef9e3e2cb196b35585a30d6a3b9bb
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
+  GTMAppAuth: 5b53231ef6920f149ab84b2969cb0ab572da3077
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
-  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  path_provider: d1a68c4065ce2e0f6fd03f8a46d698525dc79f06
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+  url_launcher: 6f6d372e3f35bd604744421b3cb4a818b23eae7b
 
 PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
