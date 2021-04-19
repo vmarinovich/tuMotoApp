@@ -267,8 +267,6 @@ class _LoginScreenState extends State<LoginScreen> {
         {
           return ProgressDialog(message: 'Espera unos segundos más',);
         }
-
-
     );
 
     final User firebaseUser = (await _FirebaseAuth.signInWithEmailAndPassword(
@@ -299,7 +297,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pop(context);
         displayToastMessage('Un error ha ocurrido, intenta de nuevo en unos minutos', context);
       }
-      ;
+
     }
   }
 

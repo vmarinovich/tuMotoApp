@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tu_moto_app/repository/appData.dart';
 import 'package:tu_moto_app/ui/screen/loginScreen.dart';
 import 'package:tu_moto_app/ui/screen/mainPage.dart';
+import 'package:tu_moto_app/ui/screen/screenSplash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,20 +21,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MainPage(),
-      initialRoute: MainPage.id,
-      routes: {
-        LoginScreen.id: (context)=> LoginScreen(),
-        MainPage.id: (context)=> MainPage(),
+    return ChangeNotifierProvider(
+      create: (context) => AppData(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MainPage(),
+        initialRoute: MainPage.id,
+        routes: {
+          LoginScreen.id: (context)=> LoginScreen(),
+          MainPage.id: (context)=> MainPage(),
+          ScreenSplash.id: (context)=> ScreenSplash(),
 
-      },
-      debugShowCheckedModeBanner: false,
+        },
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

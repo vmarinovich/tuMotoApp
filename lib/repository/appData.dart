@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tu_moto_app/repository/address.dart';
 
-import '';
+
 class AppData extends ChangeNotifier{
 
-  Address pickupAddress;
-  Address destinationAddress;
+  Address pickUpLocation;
+  Address dropOffLocation;
 
-  void updatePickupAddress(Address pickup) {
-    pickupAddress = pickup;
+  void updatePickupAddress(Address pickupAddress) {
+    pickUpLocation = pickupAddress;
     notifyListeners();
-  }}
+  }
+
+void updateDropOffAddress(Address dropOffAddress) {
+  dropOffLocation = dropOffAddress;
+  notifyListeners();
+}
+}

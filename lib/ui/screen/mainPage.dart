@@ -1,12 +1,20 @@
 import 'dart:async';
+
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tu_moto_app/bloc/assistantMethods.dart';
+import 'package:tu_moto_app/configMaps.dart';
+
+import 'package:tu_moto_app/repository/appData.dart';
+import 'package:tu_moto_app/ui/screen/searchPage.dart';
 import 'package:tu_moto_app/ui/widget/brandColors.dart';
 import 'package:tu_moto_app/ui/widget/brandDivider.dart';
 import 'package:tu_moto_app/ui/widget/pallete.dart';
+import 'package:tu_moto_app/ui/widget/progressDialog.dart';
 import 'package:tu_moto_app/ui/widget/style.dart';
 
 class MainPage extends StatefulWidget {
@@ -22,6 +30,8 @@ class _MainPageState extends State<MainPage> {
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
   GoogleMapController newGoogleMapController;
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  List<LatLng> pLineCoordinates = [];
+  Set<Polyline> polylineSet = {};
 
   Position currentPosition;
   var geoLocator = Geolocator();
@@ -35,7 +45,7 @@ class _MainPageState extends State<MainPage> {
     CameraPosition cameraPosition = new CameraPosition(target: latLngPosition, zoom: 14);
     newGoogleMapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
-    String address = await AssistantMethod.searchCoordinateAddress(position);
+    String address = await AssistantMethod.searchCoordinateAddress(position, context);
     print('Esta es tu dirección actual : :' + address);
 
   }
@@ -130,6 +140,8 @@ class _MainPageState extends State<MainPage> {
           myLocationEnabled: true,
           zoomGesturesEnabled: true,
           zoomControlsEnabled: true,
+          polylines: polylineSet,
+
 
 
           onMapCreated: (GoogleMapController controller)
@@ -207,38 +219,50 @@ class _MainPageState extends State<MainPage> {
                         fontFamily: 'Brand-Regular',
                         fontWeight: FontWeight.bold),),
                     SizedBox(height: 20,),
-                    Container(
-                        decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 6.0,
-                              spreadRadius: 0.5,
-                              offset: Offset(0.7, 0.7)
 
-                        )
-                      ],
-                    ),
 
-                      // Boton de buscar destino
+                    GestureDetector(
+                      onTap: () async{
+                        var res = await Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
 
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.search,
-                              color: Colors.blueAccent,),
-                            SizedBox(width: 10,),
-                            Text('Escribe aquí la dirección de destino'),
-                          ],
 
-                        ),
+                        if(res == 'obtainDirection'){
+                          await getPlaceDirection() ;
+                        }
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 6.0,
+                                spreadRadius: 0.5,
+                                offset: Offset(0.7, 0.7)
+
+                          )
+                        ],
                       ),
 
+                        // Boton de buscar destino
 
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.search,
+                                color: Colors.blueAccent,),
+                              SizedBox(width: 10,),
+                              Text('Escribe aquí la dirección de destino'),
+                            ],
+
+                          ),
+                        ),
+
+
+                      ),
                     ),
                         SizedBox(height: 20,),
                         // Agregar dirección de casa
@@ -250,7 +274,10 @@ class _MainPageState extends State<MainPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Mi casa'),
+                                  Text(
+                                    Provider.of<AppData>(context).pickUpLocation != null ?
+                                        Provider.of<AppData>(context).pickUpLocation.placeName
+                                     : 'Mi casa'),
                                   SizedBox(height: 3,),
                                   Text('Escribe tú dirección de residencia',
                                     style: TextStyle(
@@ -292,4 +319,27 @@ class _MainPageState extends State<MainPage> {
         ),
     );
   }
+
+
+  Future <void> getPlaceDirection() async
+  {
+    var initialPos = Provider.of<AppData>(context, listen: false).pickUpLocation;
+    var finalPos = Provider.of<AppData>(context, listen: false).dropOffLocation;
+    var pickupLatLng = LatLng(initialPos.latitude, initialPos.longitude);
+    var dropOffLatLng = LatLng(finalPos.latitude, finalPos.longitude);
+    
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => ProgressDialog(
+          message: 'Bip bip bip bup...',)
+    );
+
+    var directionDetails = await AssistantMethod.obtainPlaceDirectionDetails(pickupLatLng, dropOffLatLng);
+
+    Navigator.pop(context);
+    print(directionDetails.encodedPoints);
+
+
+  }
+
 }
